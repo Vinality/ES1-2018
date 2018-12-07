@@ -49,4 +49,19 @@ public class OperacoesBD {
         stmt.close();
         return cliente;
     }
+
+    public void alterarTelefone(Connection conn, String telefone, String cpf) throws SQLException {
+        String updateSQL = "UPDATE CLIENTE SET TELEFONE = '";
+        updateSQL += telefone;
+        updateSQL += "' WHERE CPF = '";
+        updateSQL += cpf;
+        updateSQL += "'";
+        
+        System.out.println(updateSQL);
+        
+        PreparedStatement pstmt = conn.prepareStatement(updateSQL);
+
+        pstmt.executeUpdate();
+        pstmt.close();
+    }
 }

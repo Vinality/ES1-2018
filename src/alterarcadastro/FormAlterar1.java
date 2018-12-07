@@ -40,8 +40,10 @@ public class FormAlterar1 extends javax.swing.JFrame {
     private void initComponents() {
 
         tfCPF = new javax.swing.JFormattedTextField();
+        tfTelefone = new javax.swing.JFormattedTextField();
+        jLabel7CPF1 = new javax.swing.JLabel();
         jButton3Retornar = new javax.swing.JButton();
-        jButtonBuscar = new javax.swing.JButton();
+        jButtonConfirmar = new javax.swing.JButton();
         jLabel2Imagem = new javax.swing.JLabel();
         jLabel1Titulo = new javax.swing.JLabel();
         jLabel7CPF = new javax.swing.JLabel();
@@ -61,9 +63,33 @@ public class FormAlterar1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfCPF);
-        tfCPF.setBounds(120, 130, 140, 26);
+        tfCPF.setBounds(140, 133, 140, 26);
+
+        try {
+            tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        tfTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfTelefoneActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tfTelefone);
+        tfTelefone.setBounds(220, 198, 140, 26);
+
+        jLabel7CPF1.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
+        jLabel7CPF1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_phone_3325016 (1).png"))); // NOI18N
+        jLabel7CPF1.setText("Novo Telefone:");
+        getContentPane().add(jLabel7CPF1);
+        jLabel7CPF1.setBounds(40, 170, 190, 80);
 
         jButton3Retornar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_ic_keyboard_return_48px_352473.png"))); // NOI18N
+        jButton3Retornar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3RetornarMouseClicked(evt);
+            }
+        });
         jButton3Retornar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3RetornarActionPerformed(evt);
@@ -72,20 +98,20 @@ public class FormAlterar1 extends javax.swing.JFrame {
         getContentPane().add(jButton3Retornar);
         jButton3Retornar.setBounds(30, 40, 60, 30);
 
-        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_iconfinder_search-80px_510919.png"))); // NOI18N
-        jButtonBuscar.setText("Buscar");
-        jButtonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_check-box-outline_326561.png"))); // NOI18N
+        jButtonConfirmar.setText("Confirmar");
+        jButtonConfirmar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonBuscarMouseClicked(evt);
+                jButtonConfirmarMouseClicked(evt);
             }
         });
-        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscarActionPerformed(evt);
+                jButtonConfirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonBuscar);
-        jButtonBuscar.setBounds(50, 180, 140, 60);
+        getContentPane().add(jButtonConfirmar);
+        jButtonConfirmar.setBounds(40, 290, 170, 60);
 
         jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_1rsz_kisspng-dog-grooming-puppy-cat-pet-white-dog-5a70ac435552b05161753115173335713495.png"))); // NOI18N
         jLabel2Imagem.setToolTipText("");
@@ -101,9 +127,10 @@ public class FormAlterar1 extends javax.swing.JFrame {
         jLabel1Titulo.setBounds(110, 30, 410, 60);
 
         jLabel7CPF.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
+        jLabel7CPF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_carnet-male_416923.png"))); // NOI18N
         jLabel7CPF.setText("CPF:");
         getContentPane().add(jLabel7CPF);
-        jLabel7CPF.setBounds(50, 130, 70, 30);
+        jLabel7CPF.setBounds(50, 130, 80, 30);
 
         PlanoDeFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/WhatsApp Image 2018-12-06 at 15.50.28.jpeg"))); // NOI18N
         getContentPane().add(PlanoDeFundo);
@@ -117,33 +144,44 @@ public class FormAlterar1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCPFActionPerformed
 
-    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonBuscarActionPerformed
-
     private void jButton3RetornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3RetornarActionPerformed
         
     }//GEN-LAST:event_jButton3RetornarActionPerformed
 
-    private void jButtonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBuscarMouseClicked
+    private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonConfirmarActionPerformed
+
+    private void jButtonConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmarMouseClicked
+        // TODO add your handling code here:
         String cpf;
+        String telefone;
         cpf = tfCPF.getText();
+        telefone = tfTelefone.getText();
         // JOptionPane.showMessageDialog(this,"Buscado: " + cpf);
         
         OperacoesBD op = new OperacoesBD();
         try{
             Cliente c = new Cliente();
             c = op.buscarCPF(conn, cpf);
-            if(c = null){
-                new FormAlterar2().setVisible(true);
-                this.dispose();
-            }
+            op.alterarTelefone(conn, telefone, cpf);
+            JOptionPane.showMessageDialog(this,"Cadastro atualizado");
         }
         catch(SQLException ex){
             JOptionPane.showMessageDialog(this,"Contato Não Encontrado");
             Logger.getLogger(FormBusca.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButtonBuscarMouseClicked
+    }//GEN-LAST:event_jButtonConfirmarMouseClicked
+
+    private void tfTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfTelefoneActionPerformed
+
+    private void jButton3RetornarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3RetornarMouseClicked
+        // TODO add your handling code here:
+        new Menu().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3RetornarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -183,10 +221,12 @@ public class FormAlterar1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel PlanoDeFundo;
     private javax.swing.JButton jButton3Retornar;
-    private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonConfirmar;
     private javax.swing.JLabel jLabel1Titulo;
     private javax.swing.JLabel jLabel2Imagem;
     private javax.swing.JLabel jLabel7CPF;
+    private javax.swing.JLabel jLabel7CPF1;
     private javax.swing.JFormattedTextField tfCPF;
+    private javax.swing.JFormattedTextField tfTelefone;
     // End of variables declaration//GEN-END:variables
 }
