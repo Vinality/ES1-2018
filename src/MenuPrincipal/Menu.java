@@ -8,6 +8,7 @@ package MenuPrincipal;
 import FormCadastro.FormCadastro;
 import alterarcadastro.FormAlterar1;
 import buscaclientes.FormBusca;
+import listarclientes.FormListar;
 
 /**
  *
@@ -83,6 +84,11 @@ public class Menu extends javax.swing.JFrame {
 
         jButton3ListarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_icon-folder_211608.png"))); // NOI18N
         jButton3ListarClientes.setText("Listar Clientes");
+        jButton3ListarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3ListarClientesMouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton3ListarClientes);
         jButton3ListarClientes.setBounds(60, 400, 200, 50);
 
@@ -138,6 +144,11 @@ public class Menu extends javax.swing.JFrame {
         new FormAlterar1().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ListarClientes1MouseClicked
+
+    private void jButton3ListarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3ListarClientesMouseClicked
+        new FormListar().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ListarClientesMouseClicked
 
     /**
      * @param args the command line arguments

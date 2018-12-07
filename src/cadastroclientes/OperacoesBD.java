@@ -64,4 +64,15 @@ public class OperacoesBD {
         pstmt.executeUpdate();
         pstmt.close();
     }
+    
+    public void listarClientes(Connection conn) throws SQLException{
+        String selectSQL = "SELECT * FROM CLIENTE";
+        
+        System.out.println(selectSQL);
+       
+        PreparedStatement pstmt = conn.prepareStatement(selectSQL);
+
+        pstmt.executeUpdate();
+        pstmt.close();
+    }
 }
