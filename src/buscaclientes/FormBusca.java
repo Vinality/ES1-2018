@@ -9,7 +9,7 @@ import MenuPrincipal.*;
 
 /**
  *
- * @author pedro11
+ * @author pedro11, vinality
  */
 public class FormBusca extends javax.swing.JFrame {
 
@@ -29,6 +29,7 @@ public class FormBusca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelResult = new javax.swing.JPanel();
         tfCPF = new javax.swing.JFormattedTextField();
         jButton3Retornar = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
@@ -39,6 +40,10 @@ public class FormBusca extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        jPanelResult.setBackground(new java.awt.Color(219, 216, 229));
+        getContentPane().add(jPanelResult);
+        jPanelResult.setBounds(40, 260, 330, 190);
 
         try {
             tfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -51,7 +56,7 @@ public class FormBusca extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfCPF);
-        tfCPF.setBounds(120, 130, 140, 26);
+        tfCPF.setBounds(130, 133, 140, 26);
 
         jButton3Retornar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_ic_keyboard_return_48px_352473.png"))); // NOI18N
         jButton3Retornar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,12 +80,12 @@ public class FormBusca extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonBuscar);
-        jButtonBuscar.setBounds(50, 180, 140, 60);
+        jButtonBuscar.setBounds(40, 180, 140, 60);
 
-        jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_1rsz_kisspng-dog-grooming-puppy-cat-pet-white-dog-5a70ac435552b05161753115173335713495.png"))); // NOI18N
+        jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_1kisspng-chihuahua-puppy-dog-breed-companion-dog-toy-dog-5b58711a2bfad91481800915325227781802.png"))); // NOI18N
         jLabel2Imagem.setToolTipText("");
         getContentPane().add(jLabel2Imagem);
-        jLabel2Imagem.setBounds(470, 220, 280, 250);
+        jLabel2Imagem.setBounds(440, 220, 280, 250);
 
         jLabel1Titulo.setBackground(new java.awt.Color(1, 1, 1));
         jLabel1Titulo.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 36)); // NOI18N
@@ -91,9 +96,10 @@ public class FormBusca extends javax.swing.JFrame {
         jLabel1Titulo.setBounds(110, 30, 410, 60);
 
         jLabel7CPF.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
+        jLabel7CPF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_carnet-male_416923.png"))); // NOI18N
         jLabel7CPF.setText("CPF:");
         getContentPane().add(jLabel7CPF);
-        jLabel7CPF.setBounds(50, 130, 70, 30);
+        jLabel7CPF.setBounds(50, 130, 90, 30);
 
         PlanoDeFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/WhatsApp Image 2018-12-06 at 15.50.28.jpeg"))); // NOI18N
         getContentPane().add(PlanoDeFundo);
@@ -164,6 +170,7 @@ public class FormBusca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1Titulo;
     private javax.swing.JLabel jLabel2Imagem;
     private javax.swing.JLabel jLabel7CPF;
+    private javax.swing.JPanel jPanelResult;
     private javax.swing.JFormattedTextField tfCPF;
     // End of variables declaration//GEN-END:variables
 }
