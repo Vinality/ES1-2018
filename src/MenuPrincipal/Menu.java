@@ -10,7 +10,7 @@ import buscaclientes.FormBusca;
 
 /**
  *
- * @author pedro11
+ * @author pedro11, vinality
  */
 public class Menu extends javax.swing.JFrame {
 
