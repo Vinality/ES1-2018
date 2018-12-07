@@ -76,13 +76,13 @@ public class FormAlterar1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfTelefone);
-        tfTelefone.setBounds(220, 198, 140, 26);
+        tfTelefone.setBounds(230, 200, 140, 26);
 
         jLabel7CPF1.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
         jLabel7CPF1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_phone_3325016 (1).png"))); // NOI18N
         jLabel7CPF1.setText("Novo Telefone:");
         getContentPane().add(jLabel7CPF1);
-        jLabel7CPF1.setBounds(40, 170, 190, 80);
+        jLabel7CPF1.setBounds(50, 170, 190, 80);
 
         jButton3Retornar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_ic_keyboard_return_48px_352473.png"))); // NOI18N
         jButton3Retornar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,10 +113,10 @@ public class FormAlterar1 extends javax.swing.JFrame {
         getContentPane().add(jButtonConfirmar);
         jButtonConfirmar.setBounds(40, 290, 170, 60);
 
-        jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_1rsz_kisspng-dog-grooming-puppy-cat-pet-white-dog-5a70ac435552b05161753115173335713495.png"))); // NOI18N
+        jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_1doge.png"))); // NOI18N
         jLabel2Imagem.setToolTipText("");
         getContentPane().add(jLabel2Imagem);
-        jLabel2Imagem.setBounds(470, 220, 280, 250);
+        jLabel2Imagem.setBounds(410, 210, 280, 250);
 
         jLabel1Titulo.setBackground(new java.awt.Color(1, 1, 1));
         jLabel1Titulo.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 36)); // NOI18N

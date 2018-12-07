@@ -35,7 +35,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1CadastrarCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton3ListarClientes1 = new javax.swing.JButton();
+        jButton3AlterarCliente = new javax.swing.JButton();
         jButton3ListarClientes = new javax.swing.JButton();
         jButton3RemoverCliente = new javax.swing.JButton();
         jButton2BuscarCliente = new javax.swing.JButton();
@@ -61,6 +61,11 @@ public class Menu extends javax.swing.JFrame {
                 jButton1CadastrarClienteActionPerformed(evt);
             }
         });
+        jButton1CadastrarCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1CadastrarClienteKeyPressed(evt);
+            }
+        });
         getContentPane().add(jButton1CadastrarCliente);
         jButton1CadastrarCliente.setBounds(60, 120, 200, 50);
 
@@ -72,18 +77,18 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(110, 30, 370, 50);
 
-        jButton3ListarClientes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_icon-folder_211608.png"))); // NOI18N
-        jButton3ListarClientes1.setText("Alterar Cliente");
-        jButton3ListarClientes1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton3AlterarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_icon-folder_211608.png"))); // NOI18N
+        jButton3AlterarCliente.setText("Alterar Cliente");
+        jButton3AlterarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3ListarClientes1MouseClicked(evt);
+                jButton3AlterarClienteMouseClicked(evt);
             }
         });
-        getContentPane().add(jButton3ListarClientes1);
-        jButton3ListarClientes1.setBounds(60, 330, 200, 50);
+        getContentPane().add(jButton3AlterarCliente);
+        jButton3AlterarCliente.setBounds(60, 330, 200, 50);
 
-        jButton3ListarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_icon-folder_211608.png"))); // NOI18N
-        jButton3ListarClientes.setText("Listar Clientes");
+        jButton3ListarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_list-unordered_298815.png"))); // NOI18N
+        jButton3ListarClientes.setText("   Listar Clientes");
         jButton3ListarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3ListarClientesMouseClicked(evt);
@@ -140,15 +145,19 @@ public class Menu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2BuscarClienteMouseClicked
 
-    private void jButton3ListarClientes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3ListarClientes1MouseClicked
+    private void jButton3AlterarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3AlterarClienteMouseClicked
         new FormAlterar1().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton3ListarClientes1MouseClicked
+    }//GEN-LAST:event_jButton3AlterarClienteMouseClicked
 
     private void jButton3ListarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3ListarClientesMouseClicked
         new FormListar().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ListarClientesMouseClicked
+
+    private void jButton1CadastrarClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1CadastrarClienteKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1CadastrarClienteKeyPressed
 
     /**
      * @param args the command line arguments
@@ -189,8 +198,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel PlanoDeFundo;
     private javax.swing.JButton jButton1CadastrarCliente;
     private javax.swing.JButton jButton2BuscarCliente;
+    private javax.swing.JButton jButton3AlterarCliente;
     private javax.swing.JButton jButton3ListarClientes;
-    private javax.swing.JButton jButton3ListarClientes1;
     private javax.swing.JButton jButton3RemoverCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

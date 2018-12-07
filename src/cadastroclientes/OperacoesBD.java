@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -65,14 +67,27 @@ public class OperacoesBD {
         pstmt.close();
     }
     
-    public void listarClientes(Connection conn) throws SQLException{
+    public void listarClientes(Connection conn, JTextArea j) throws SQLException{
         String selectSQL = "SELECT * FROM CLIENTE";
-        
+        Cliente cliente = null;
         System.out.println(selectSQL);
        
         PreparedStatement pstmt = conn.prepareStatement(selectSQL);
 
-        pstmt.executeUpdate();
+        ResultSet rs = pstmt.executeQuery();
+        
+        while (rs.next()) {
+            cliente = new Cliente();
+            cliente.setNome(rs.getString("nome"));
+            cliente.setCpf(rs.getString("cpf"));
+            cliente.setIdade(Integer.parseInt(rs.getString("idade")));
+            cliente.setTelefone(rs.getString("telefone"));
+            j.append("Nome: " + cliente.getNome() + "\n"+ "CPF:" + cliente.getCpf() + "\n" + "Idade: " + cliente.getIdade() + "\n" + "Telefone: " + cliente.getTelefone() + "\n\n");
+            
+        }
+        rs.close();
+        
+        pstmt.execute();
         pstmt.close();
     }
 }

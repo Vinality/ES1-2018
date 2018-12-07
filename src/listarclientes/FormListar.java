@@ -38,8 +38,8 @@ public class FormListar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPaneBusca = new javax.swing.JTextPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jButton3Retornar = new javax.swing.JButton();
         jButtonListar = new javax.swing.JButton();
         jLabel2Imagem = new javax.swing.JLabel();
@@ -49,10 +49,12 @@ public class FormListar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jScrollPane1.setViewportView(jTextPaneBusca);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 90, 300, 300);
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(30, 100, 320, 290);
 
         jButton3Retornar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_ic_keyboard_return_48px_352473.png"))); // NOI18N
         jButton3Retornar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -83,7 +85,7 @@ public class FormListar extends javax.swing.JFrame {
         getContentPane().add(jButtonListar);
         jButtonListar.setBounds(30, 400, 140, 60);
 
-        jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_1kisspng-chihuahua-puppy-dog-breed-companion-dog-toy-dog-5b58711a2bfad91481800915325227781802.png"))); // NOI18N
+        jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_kisspng-border-collie-puppy-cat-pet-veterinarian-dogs-5aba1a760bf6d1553726521522145910049.png"))); // NOI18N
         jLabel2Imagem.setToolTipText("");
         getContentPane().add(jLabel2Imagem);
         jLabel2Imagem.setBounds(440, 220, 280, 250);
@@ -122,7 +124,7 @@ public class FormListar extends javax.swing.JFrame {
         // TODO add your handling code here:       
         OperacoesBD op = new OperacoesBD();
         try{
-            op.listarClientes(conn);
+            op.listarClientes(conn, jTextArea1);
         }
         catch(SQLException ex){
             JOptionPane.showMessageDialog(this,"Clientes Não Encontrados");
@@ -172,7 +174,7 @@ public class FormListar extends javax.swing.JFrame {
     private javax.swing.JButton jButtonListar;
     private javax.swing.JLabel jLabel1Titulo;
     private javax.swing.JLabel jLabel2Imagem;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPaneBusca;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
