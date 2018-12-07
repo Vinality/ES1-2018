@@ -6,18 +6,27 @@
 package buscaclientes;
 
 import MenuPrincipal.*;
+import cadastroclientes.Cliente;
+import cadastroclientes.Conexao;
+import cadastroclientes.OperacoesBD;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author pedro11, vinality
  */
 public class FormBusca extends javax.swing.JFrame {
-
+    private Connection conn;
     /**
      * Creates new form Menu
      */
     public FormBusca() {
         initComponents();
+        conn = Conexao.getConnection();
     }
 
     /**
@@ -29,7 +38,8 @@ public class FormBusca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelResult = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPaneBusca = new javax.swing.JTextPane();
         tfCPF = new javax.swing.JFormattedTextField();
         jButton3Retornar = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
@@ -41,9 +51,10 @@ public class FormBusca extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jPanelResult.setBackground(new java.awt.Color(219, 216, 229));
-        getContentPane().add(jPanelResult);
-        jPanelResult.setBounds(40, 260, 330, 190);
+        jScrollPane1.setViewportView(jTextPaneBusca);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 260, 260, 190);
 
         try {
             tfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -74,6 +85,11 @@ public class FormBusca extends javax.swing.JFrame {
 
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_iconfinder_search-80px_510919.png"))); // NOI18N
         jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonBuscarMouseClicked(evt);
+            }
+        });
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuscarActionPerformed(evt);
@@ -127,6 +143,24 @@ public class FormBusca extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3RetornarMouseClicked
 
+    private void jButtonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBuscarMouseClicked
+        // TODO add your handling code here:
+        String cpf;
+        cpf = tfCPF.getText();
+//        JOptionPane.showMessageDialog(this,"Buscado: " + cpf);
+        
+        OperacoesBD op = new OperacoesBD();
+        try{
+            Cliente c = new Cliente();
+            c = op.buscarCPF(conn, cpf);
+            jTextPaneBusca.setText("Nome: " + c.getNome() + "\n"+ "CPF:" + c.getCpf() + "\n" + "Idade: " + c.getIdade() + "\n" + "Telefone: " + c.getTelefone());        
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(this,"Contato Não Encontrado");
+            Logger.getLogger(FormBusca.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonBuscarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -170,7 +204,8 @@ public class FormBusca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1Titulo;
     private javax.swing.JLabel jLabel2Imagem;
     private javax.swing.JLabel jLabel7CPF;
-    private javax.swing.JPanel jPanelResult;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane jTextPaneBusca;
     private javax.swing.JFormattedTextField tfCPF;
     // End of variables declaration//GEN-END:variables
 }

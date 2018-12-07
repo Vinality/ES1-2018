@@ -6,6 +6,7 @@
 package MenuPrincipal;
 
 import FormCadastro.FormCadastro;
+import alterarcadastro.FormAlterar1;
 import buscaclientes.FormBusca;
 
 /**
@@ -33,6 +34,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1CadastrarCliente = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton3ListarClientes1 = new javax.swing.JButton();
         jButton3ListarClientes = new javax.swing.JButton();
         jButton3RemoverCliente = new javax.swing.JButton();
         jButton2BuscarCliente = new javax.swing.JButton();
@@ -69,10 +71,20 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(110, 30, 370, 50);
 
+        jButton3ListarClientes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_icon-folder_211608.png"))); // NOI18N
+        jButton3ListarClientes1.setText("Alterar Cliente");
+        jButton3ListarClientes1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3ListarClientes1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton3ListarClientes1);
+        jButton3ListarClientes1.setBounds(60, 330, 200, 50);
+
         jButton3ListarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_icon-folder_211608.png"))); // NOI18N
         jButton3ListarClientes.setText("Listar Clientes");
         getContentPane().add(jButton3ListarClientes);
-        jButton3ListarClientes.setBounds(60, 330, 200, 50);
+        jButton3ListarClientes.setBounds(60, 400, 200, 50);
 
         jButton3RemoverCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_iconfinder_remove_user_309037.png"))); // NOI18N
         jButton3RemoverCliente.setText("Remover Cliente");
@@ -122,6 +134,11 @@ public class Menu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2BuscarClienteMouseClicked
 
+    private void jButton3ListarClientes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3ListarClientes1MouseClicked
+        new FormAlterar1().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ListarClientes1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -162,6 +179,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButton1CadastrarCliente;
     private javax.swing.JButton jButton2BuscarCliente;
     private javax.swing.JButton jButton3ListarClientes;
+    private javax.swing.JButton jButton3ListarClientes1;
     private javax.swing.JButton jButton3RemoverCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -7,19 +7,27 @@ package FormCadastro;
 
 import MenuPrincipal.*;
 import cadastroclientes.Cliente;
+import cadastroclientes.Conexao;
+import cadastroclientes.OperacoesBD;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author pedro11, vinality
  */
-public class FormCadastro extends javax.swing.JFrame {
 
+public class FormCadastro extends javax.swing.JFrame {
+    private Connection conn;
     /**
      * Creates new form Menu
      */
     public FormCadastro() {
         initComponents();
+        conn = Conexao.getConnection();
     }
 
     /**
@@ -85,6 +93,7 @@ public class FormCadastro extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        tfCPF.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
         tfCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfCPFActionPerformed(evt);
@@ -216,7 +225,16 @@ public class FormCadastro extends javax.swing.JFrame {
         int idade = Integer.parseInt(tfIdade.getText());
         c.setIdade(idade);
         c.setCpf(tfCPF.getText());
-        JOptionPane.showMessageDialog(this, "Cliente cadastrado\n Nome: " + c.getNome() + "\n" + "CPF: " + c.getCpf() + "\n" + "Idade: " + c.getIdade() + "\n" + "Telefone: " + c.getTelefone());
+        
+        OperacoesBD op=new OperacoesBD();
+        try {
+            op.salvar((Connection) conn, c);
+            JOptionPane.showMessageDialog(this,"Cliente Cadastrado:"+(String)tfCPF.getText());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this,"Cliente Não Cadastrado");
+            Logger.getLogger(FormCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         clearFields();
     }//GEN-LAST:event_jButton2CadastrarMouseClicked
 
@@ -240,6 +258,7 @@ public class FormCadastro extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

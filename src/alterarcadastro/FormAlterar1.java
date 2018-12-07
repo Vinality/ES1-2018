@@ -7,18 +7,27 @@ package alterarcadastro;
 
 import buscaclientes.*;
 import MenuPrincipal.*;
+import cadastroclientes.Cliente;
+import cadastroclientes.Conexao;
+import cadastroclientes.OperacoesBD;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author pedro11
  */
 public class FormAlterar1 extends javax.swing.JFrame {
-
+    private Connection conn;
     /**
      * Creates new form Menu
      */
     public FormAlterar1() {
         initComponents();
+        conn = Conexao.getConnection();
     }
 
     /**
@@ -52,7 +61,7 @@ public class FormAlterar1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfCPF);
-        tfCPF.setBounds(120, 130, 140, 28);
+        tfCPF.setBounds(120, 130, 140, 26);
 
         jButton3Retornar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_ic_keyboard_return_48px_352473.png"))); // NOI18N
         jButton3Retornar.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +74,11 @@ public class FormAlterar1 extends javax.swing.JFrame {
 
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_iconfinder_search-80px_510919.png"))); // NOI18N
         jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonBuscarMouseClicked(evt);
+            }
+        });
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuscarActionPerformed(evt);
@@ -110,6 +124,26 @@ public class FormAlterar1 extends javax.swing.JFrame {
     private void jButton3RetornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3RetornarActionPerformed
         
     }//GEN-LAST:event_jButton3RetornarActionPerformed
+
+    private void jButtonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBuscarMouseClicked
+        String cpf;
+        cpf = tfCPF.getText();
+        // JOptionPane.showMessageDialog(this,"Buscado: " + cpf);
+        
+        OperacoesBD op = new OperacoesBD();
+        try{
+            Cliente c = new Cliente();
+            c = op.buscarCPF(conn, cpf);
+            if(c = null){
+                new FormAlterar2().setVisible(true);
+                this.dispose();
+            }
+        }
+        catch(SQLException ex){
+            JOptionPane.showMessageDialog(this,"Contato Não Encontrado");
+            Logger.getLogger(FormBusca.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonBuscarMouseClicked
 
     /**
      * @param args the command line arguments
