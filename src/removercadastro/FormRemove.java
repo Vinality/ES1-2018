@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package buscaclientes;
+package removercadastro;
 
-import FormCadastro.FormCadastro;
 import MenuPrincipal.*;
 import cadastroclientes.Cliente;
 import cadastroclientes.Conexao;
@@ -20,12 +19,12 @@ import javax.swing.JOptionPane;
  *
  * @author pedro11, vinality
  */
-public class FormBusca extends javax.swing.JFrame {
+public class FormRemove extends javax.swing.JFrame {
     private Connection conn;
     /**
      * Creates new form Menu
      */
-    public FormBusca() {
+    public FormRemove() {
         initComponents();
         conn = Conexao.getConnection();
     }
@@ -99,16 +98,16 @@ public class FormBusca extends javax.swing.JFrame {
         getContentPane().add(jButtonBuscar);
         jButtonBuscar.setBounds(40, 180, 140, 60);
 
-        jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_1kisspng-chihuahua-puppy-dog-breed-companion-dog-toy-dog-5b58711a2bfad91481800915325227781802.png"))); // NOI18N
+        jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_sad-dog-png-4.png"))); // NOI18N
         jLabel2Imagem.setToolTipText("");
         getContentPane().add(jLabel2Imagem);
-        jLabel2Imagem.setBounds(440, 220, 280, 250);
+        jLabel2Imagem.setBounds(400, 260, 280, 250);
 
         jLabel1Titulo.setBackground(new java.awt.Color(1, 1, 1));
         jLabel1Titulo.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 36)); // NOI18N
         jLabel1Titulo.setForeground(new java.awt.Color(1, 1, 1));
         jLabel1Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1Titulo.setText("Buscar Cliente");
+        jLabel1Titulo.setText("Remover Cliente");
         getContentPane().add(jLabel1Titulo);
         jLabel1Titulo.setBounds(110, 30, 410, 60);
 
@@ -154,24 +153,24 @@ public class FormBusca extends javax.swing.JFrame {
         jTextPaneBusca.setText("");
         try{
             Cliente c = new Cliente();
+            int resposta;
+            Object[] options = {"Sim", "Não"};
             c = op.buscarCPF(conn, cpf);
-            jTextPaneBusca.setText("Nome: " + c.getNome() + "\n"+ "CPF: " + c.getCpf() + "\n" + "Idade: " + c.getIdade() + "\n" + "Telefone: " + c.getTelefone());        
+            jTextPaneBusca.setText("Nome: " + c.getNome() + "\n"+ "CPF: " + c.getCpf() + "\n" + "Idade: " + c.getIdade() + "\n" + "Telefone: " + c.getTelefone()); 
+            resposta = JOptionPane.showOptionDialog( null,"Confirma a exlcusão do cliente?", "Exclusão",JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            
+            if(resposta == 0){
+                op.removerCliente(conn, c.getCpf());
+                JOptionPane.showMessageDialog(this,"Cliente Removido!");
+            }
         }
         catch(SQLException ex){
             JOptionPane.showMessageDialog(this,"Cliente Não Encontrado");
-            Logger.getLogger(FormBusca.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FormRemove.class.getName()).log(Level.SEVERE, null, ex);
         }
-        catch(NullPointerException e){
-            int resposta;
-            Object[] options = {"Sim", "Não"};
-//            JOptionPane.showMessageDialog(this,"Cliente Não Encontrado: Deseja Inseri-lo?");
-            resposta = JOptionPane.showOptionDialog( null,"Cliente Não Encontrado: Deseja Inseri-lo?", "Exclusão",JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-            Logger.getLogger(FormBusca.class.getName()).log(Level.SEVERE, null, e);
-            
-            if(resposta == 0){
-                new FormCadastro().setVisible(true);
-                this.dispose();
-            }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,"Cliente Não Encontrado");
+            Logger.getLogger(FormRemove.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jButtonBuscarMouseClicked
 
@@ -205,7 +204,7 @@ public class FormBusca extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormBusca().setVisible(true);
+                new FormRemove().setVisible(true);
                 // Astalala
             }
         });

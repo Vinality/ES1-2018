@@ -47,28 +47,28 @@ public class OperacoesBD {
             cliente.setIdade(Integer.parseInt(rs.getString("idade")));
             cliente.setTelefone(rs.getString("telefone"));
         }
+       
         rs.close();
         stmt.close();
         return cliente;
     }
 
-    public void alterarTelefone(Connection conn, String telefone, String cpf) throws SQLException {
+    public void alterarTelefone(Connection conn, String telefone, String cpf) throws SQLException, Exception {
         String updateSQL = "UPDATE CLIENTE SET TELEFONE = '";
         updateSQL += telefone;
         updateSQL += "' WHERE CPF = '";
         updateSQL += cpf;
         updateSQL += "'";
-        
-        System.out.println(updateSQL);
-        
+            
         PreparedStatement pstmt = conn.prepareStatement(updateSQL);
 
-        pstmt.executeUpdate();
+        if(pstmt.executeUpdate() == 0)
+            throw new Exception();
         pstmt.close();
     }
     
     public void listarClientes(Connection conn, JTextArea j) throws SQLException{
-        String selectSQL = "SELECT * FROM CLIENTE";
+        String selectSQL = "SELECT * FROM CLIENTE ORDER BY NOME ASC";
         Cliente cliente = null;
         System.out.println(selectSQL);
        
@@ -90,4 +90,20 @@ public class OperacoesBD {
         pstmt.execute();
         pstmt.close();
     }
+    
+    public void removerCliente(Connection conn, String cpf) throws Exception{
+        String removeSQL = "DELETE FROM CLIENTE";
+        removeSQL += " WHERE CPF = '";
+        removeSQL += cpf;
+        removeSQL += "'";
+        
+        System.out.println(removeSQL);
+            
+        PreparedStatement pstmt = conn.prepareStatement(removeSQL);
+
+        if(pstmt.executeUpdate() == 0)
+            throw new Exception();
+        pstmt.close();
+    }
 }
+

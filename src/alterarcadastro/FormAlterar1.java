@@ -162,6 +162,8 @@ public class FormAlterar1 extends javax.swing.JFrame {
         
         OperacoesBD op = new OperacoesBD();
         try{
+            tfCPF.setText("");
+            tfTelefone.setText("");
             Cliente c = new Cliente();
             c = op.buscarCPF(conn, cpf);
             op.alterarTelefone(conn, telefone, cpf);
@@ -170,6 +172,10 @@ public class FormAlterar1 extends javax.swing.JFrame {
         catch(SQLException ex){
             JOptionPane.showMessageDialog(this,"Cliente Não Encontrado");
             Logger.getLogger(FormBusca.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this,"Cliente Não Encontrado");
+            Logger.getLogger(FormBusca.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_jButtonConfirmarMouseClicked
 

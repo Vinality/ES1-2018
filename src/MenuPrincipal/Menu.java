@@ -5,6 +5,7 @@
  */
 package MenuPrincipal;
 
+import removercadastro.FormRemove;
 import FormCadastro.FormCadastro;
 import alterarcadastro.FormAlterar1;
 import buscaclientes.FormBusca;
@@ -99,6 +100,11 @@ public class Menu extends javax.swing.JFrame {
 
         jButton3RemoverCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_iconfinder_remove_user_309037.png"))); // NOI18N
         jButton3RemoverCliente.setText("Remover Cliente");
+        jButton3RemoverCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3RemoverClienteMouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton3RemoverCliente);
         jButton3RemoverCliente.setBounds(60, 190, 200, 50);
 
@@ -158,6 +164,12 @@ public class Menu extends javax.swing.JFrame {
     private void jButton1CadastrarClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1CadastrarClienteKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1CadastrarClienteKeyPressed
+
+    private void jButton3RemoverClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3RemoverClienteMouseClicked
+        // TODO add your handling code here:
+        new FormRemove().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3RemoverClienteMouseClicked
 
     /**
      * @param args the command line arguments
