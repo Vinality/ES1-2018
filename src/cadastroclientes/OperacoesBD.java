@@ -18,7 +18,7 @@ import javax.swing.JTextPane;
  */
 public class OperacoesBD {
     
-    public void salvar(Connection conn,Cliente c)throws SQLException{
+    public void salvar(Connection conn, Cliente c, Paciente p)throws SQLException{
         String concatena="','";
         String insertSQL="INSERT INTO CLIENTE(nome, cpf, idade,telefone) VALUES('";
         insertSQL+=c.getNome()+concatena;
@@ -27,6 +27,17 @@ public class OperacoesBD {
         insertSQL+=c.getTelefone()+"')";
         System.out.println(insertSQL);
         PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+
+        pstmt.execute();
+        pstmt.close();
+        
+        insertSQL ="INSERT INTO PACIENTE(nome_pet, rga, cpf_fk) VALUES('";
+        insertSQL+=p.getNome()+concatena;
+        insertSQL+=p.getRGA()+concatena;
+        insertSQL+=c.getCpf()+"')";
+        
+        System.out.println(insertSQL);
+        pstmt = conn.prepareStatement(insertSQL);
 
         pstmt.execute();
         pstmt.close();
@@ -73,17 +84,33 @@ public class OperacoesBD {
         System.out.println(selectSQL);
        
         PreparedStatement pstmt = conn.prepareStatement(selectSQL);
-
         ResultSet rs = pstmt.executeQuery();
-        
+       
         while (rs.next()) {
             cliente = new Cliente();
             cliente.setNome(rs.getString("nome"));
             cliente.setCpf(rs.getString("cpf"));
             cliente.setIdade(Integer.parseInt(rs.getString("idade")));
             cliente.setTelefone(rs.getString("telefone"));
-            j.append("Nome: " + cliente.getNome() + "\n"+ "CPF:" + cliente.getCpf() + "\n" + "Idade: " + cliente.getIdade() + "\n" + "Telefone: " + cliente.getTelefone() + "\n\n");
             
+            selectSQL="SELECT nome, nome_pet FROM PACIENTE JOIN CLIENTE ON cliente.CPF = '";
+            selectSQL+=cliente.getCpf()+ "'";
+            selectSQL+=" AND paciente.CPF_FK = '";
+            selectSQL+=cliente.getCpf()+ "'";
+            
+            pstmt = conn.prepareStatement(selectSQL);
+            ResultSet rs2 = pstmt.executeQuery();
+            
+            j.append("Nome: " + cliente.getNome() + "\n"+ "CPF:" + cliente.getCpf() + "\n" + "Idade: " + cliente.getIdade() + "\n" + "Telefone: " + cliente.getTelefone() + "\n");
+            
+            j.append("Nome do pet: ");
+            while(rs2.next()){
+                Paciente p = new Paciente();
+                p.setNome(rs2.getString("nome_pet"));
+                j.append(p.getNome() + ", ");
+            }
+            j.append("\n\n");
+            rs2.close();
         }
         rs.close();
         
@@ -103,6 +130,20 @@ public class OperacoesBD {
 
         if(pstmt.executeUpdate() == 0)
             throw new Exception();
+        pstmt.close();
+    }
+    
+    public void salvarPet(Connection conn, String cpf, Paciente p)throws SQLException{
+        String insertSQL ="INSERT INTO PACIENTE(nome_pet, rga, cpf_fk) VALUES('";
+        String concatena="','";
+        insertSQL+=p.getNome()+concatena;
+        insertSQL+=p.getRGA()+concatena;
+        insertSQL+=cpf+"')";
+        
+        PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+        pstmt = conn.prepareStatement(insertSQL);
+
+        pstmt.execute();
         pstmt.close();
     }
 }

@@ -21,14 +21,25 @@ import javax.swing.JOptionPane;
  * @author pedro11, vinality
  */
 
-public class FormCadastro extends javax.swing.JFrame {
+public class FormInserirPet extends javax.swing.JFrame {
     private Connection conn;
+
+    public String getCpf_cliente() {
+        return cpf_cliente;
+    }
+
+    public void setCpf_cliente(String cpf_cliente) {
+        this.cpf_cliente = cpf_cliente;
+    }
+    private String cpf_cliente;
+    
     /**
      * Creates new form Menu
      */
-    public FormCadastro() {
+    public FormInserirPet(String cpf) {
         initComponents();
         conn = Conexao.getConnection();
+        this.cpf_cliente = cpf;
     }
 
     /**
@@ -44,19 +55,11 @@ public class FormCadastro extends javax.swing.JFrame {
         jLabel6NomePet = new javax.swing.JLabel();
         jLabel7RGA = new javax.swing.JLabel();
         tfRGA = new javax.swing.JFormattedTextField();
-        tfIdade = new javax.swing.JTextField();
-        tfNome = new javax.swing.JTextField();
-        tfTelefone = new javax.swing.JFormattedTextField();
-        tfCPF = new javax.swing.JFormattedTextField();
         jButton1Limpar = new javax.swing.JButton();
         jButton3Retornar = new javax.swing.JButton();
         jButton2Cadastrar = new javax.swing.JButton();
-        jLabel6Telefone = new javax.swing.JLabel();
-        jLabel5Idade = new javax.swing.JLabel();
-        jLabel3Nome = new javax.swing.JLabel();
         jLabel2Imagem = new javax.swing.JLabel();
         jLabel1Titulo = new javax.swing.JLabel();
-        jLabel7CPF = new javax.swing.JLabel();
         PlanoDeFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,19 +72,19 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfNomePet);
-        tfNomePet.setBounds(200, 323, 230, 26);
+        tfNomePet.setBounds(210, 133, 230, 26);
 
         jLabel6NomePet.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
         jLabel6NomePet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_paw_1608784 (1).png"))); // NOI18N
         jLabel6NomePet.setText("Nome do Pet:");
         getContentPane().add(jLabel6NomePet);
-        jLabel6NomePet.setBounds(30, 320, 170, 32);
+        jLabel6NomePet.setBounds(40, 130, 170, 32);
 
         jLabel7RGA.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
         jLabel7RGA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_carnet-male_416923.png"))); // NOI18N
         jLabel7RGA.setText("RGA:");
         getContentPane().add(jLabel7RGA);
-        jLabel7RGA.setBounds(30, 378, 100, 30);
+        jLabel7RGA.setBounds(40, 190, 100, 30);
 
         try {
             tfRGA.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -95,52 +98,7 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfRGA);
-        tfRGA.setBounds(160, 380, 140, 26);
-
-        tfIdade.setToolTipText("");
-        tfIdade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfIdadeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tfIdade);
-        tfIdade.setBounds(160, 203, 40, 26);
-
-        tfNome.setToolTipText("");
-        tfNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNomeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tfNome);
-        tfNome.setBounds(160, 90, 300, 26);
-
-        try {
-            tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        tfTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfTelefoneActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tfTelefone);
-        tfTelefone.setBounds(160, 263, 140, 26);
-
-        try {
-            tfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        tfCPF.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
-        tfCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfCPFActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tfCPF);
-        tfCPF.setBounds(160, 143, 140, 26);
+        tfRGA.setBounds(170, 193, 140, 26);
 
         jButton1Limpar.setText("Limpar");
         jButton1Limpar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -154,7 +112,7 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1Limpar);
-        jButton1Limpar.setBounds(160, 430, 80, 29);
+        jButton1Limpar.setBounds(170, 340, 80, 29);
 
         jButton3Retornar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_ic_keyboard_return_48px_352473.png"))); // NOI18N
         jButton3Retornar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -182,25 +140,7 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2Cadastrar);
-        jButton2Cadastrar.setBounds(40, 430, 100, 29);
-
-        jLabel6Telefone.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
-        jLabel6Telefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_phone_3325016 (1).png"))); // NOI18N
-        jLabel6Telefone.setText("Telefone:");
-        getContentPane().add(jLabel6Telefone);
-        jLabel6Telefone.setBounds(30, 260, 120, 32);
-
-        jLabel5Idade.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
-        jLabel5Idade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_birthday-cake_1608875.png"))); // NOI18N
-        jLabel5Idade.setText("Idade:");
-        getContentPane().add(jLabel5Idade);
-        jLabel5Idade.setBounds(30, 200, 100, 30);
-
-        jLabel3Nome.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
-        jLabel3Nome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_user_309035.png"))); // NOI18N
-        jLabel3Nome.setText("Nome:");
-        getContentPane().add(jLabel3Nome);
-        jLabel3Nome.setBounds(30, 90, 110, 22);
+        jButton2Cadastrar.setBounds(30, 340, 100, 29);
 
         jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_1rsz_kisspng-dog-grooming-puppy-cat-pet-white-dog-5a70ac435552b05161753115173335713495.png"))); // NOI18N
         jLabel2Imagem.setToolTipText("");
@@ -215,12 +155,6 @@ public class FormCadastro extends javax.swing.JFrame {
         getContentPane().add(jLabel1Titulo);
         jLabel1Titulo.setBounds(110, 25, 410, 60);
 
-        jLabel7CPF.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
-        jLabel7CPF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_carnet-male_416923.png"))); // NOI18N
-        jLabel7CPF.setText("CPF:");
-        getContentPane().add(jLabel7CPF);
-        jLabel7CPF.setBounds(30, 140, 100, 30);
-
         PlanoDeFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/WhatsApp Image 2018-12-06 at 15.50.28.jpeg"))); // NOI18N
         getContentPane().add(PlanoDeFundo);
         PlanoDeFundo.setBounds(0, -60, 1240, 690);
@@ -232,18 +166,6 @@ public class FormCadastro extends javax.swing.JFrame {
     private void tfNomePetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomePetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNomePetActionPerformed
-
-    private void tfIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfIdadeActionPerformed
-
-    private void tfTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfTelefoneActionPerformed
-
-    private void tfCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfCPFActionPerformed
 
     private void jButton2CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2CadastrarActionPerformed
         // TODO add your handling code here:
@@ -259,37 +181,28 @@ public class FormCadastro extends javax.swing.JFrame {
 
     private void jButton2CadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2CadastrarMouseClicked
         // TODO add your handling code here:
-        Cliente c = new Cliente();
         Paciente p = new Paciente();
         int flag = 0;
         
         p.setNome(tfNomePet.getText());
         p.setRGA(tfRGA.getText()); 
-        c.setNome(tfNome.getText());
-        c.setTelefone(tfTelefone.getText());
-        int idade = Integer.parseInt(tfIdade.getText());
-        c.setIdade(idade);
-        c.setCpf(tfCPF.getText());
         
         OperacoesBD op=new OperacoesBD();
         try {
-            op.salvar((Connection) conn, c, p);
-            JOptionPane.showMessageDialog(this,"Cliente Cadastrado:"+(String)tfCPF.getText());
+            op.salvarPet((Connection) conn, this.getCpf_cliente() , p);
+            JOptionPane.showMessageDialog(this,"Paciente Cadastrado:"+(String)tfRGA.getText());
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this,"Cliente Não Cadastrado");
+            JOptionPane.showMessageDialog(this,"Paciente Não Cadastrado");
             Logger.getLogger(FormCadastro.class.getName()).log(Level.SEVERE, null, ex);
             flag = 1;
         }
         
-//        int resposta;
-//        Object[] options = {"Sim", "Não"};
-//        resposta = JOptionPane.showOptionDialog( null,"Deseja inserir mais um pet?", "Inserir", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        int resposta;
+        Object[] options = {"Sim", "Não"};
+        resposta = JOptionPane.showOptionDialog( null,"Deseja inserir mais um pet?", "Inserir", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         
-        if(flag == 0){
-            int resposta;
-            Object[] options = {"Sim", "Não"};
-            resposta = JOptionPane.showOptionDialog( null,"Deseja inserir mais um pet?", "Inserir", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-            new FormInserirPet(c.getCpf()).setVisible(true);
+        if(flag == 0 && resposta == 0){
+            new FormInserirPet(this.getCpf_cliente()).setVisible(true);
             this.dispose();
         }
         else{
@@ -314,16 +227,10 @@ public class FormCadastro extends javax.swing.JFrame {
     private void tfRGAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfRGAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfRGAActionPerformed
-
-    private void tfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfNomeActionPerformed
     
     private void clearFields(){
         tfNomePet.setText("");
-        tfTelefone.setText("");
-        tfIdade.setText("");
-        tfCPF.setText("");
+        tfRGA.setText("");
     }
     /**
      * @param args the command line arguments
@@ -368,17 +275,9 @@ public class FormCadastro extends javax.swing.JFrame {
     private javax.swing.JButton jButton3Retornar;
     private javax.swing.JLabel jLabel1Titulo;
     private javax.swing.JLabel jLabel2Imagem;
-    private javax.swing.JLabel jLabel3Nome;
-    private javax.swing.JLabel jLabel5Idade;
     private javax.swing.JLabel jLabel6NomePet;
-    private javax.swing.JLabel jLabel6Telefone;
-    private javax.swing.JLabel jLabel7CPF;
     private javax.swing.JLabel jLabel7RGA;
-    private javax.swing.JFormattedTextField tfCPF;
-    private javax.swing.JTextField tfIdade;
-    private javax.swing.JTextField tfNome;
     private javax.swing.JTextField tfNomePet;
     private javax.swing.JFormattedTextField tfRGA;
-    private javax.swing.JFormattedTextField tfTelefone;
     // End of variables declaration//GEN-END:variables
 }

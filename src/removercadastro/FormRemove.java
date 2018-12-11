@@ -39,7 +39,7 @@ public class FormRemove extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPaneBusca = new javax.swing.JTextPane();
+        jTextPaneRemove = new javax.swing.JTextPane();
         tfCPF = new javax.swing.JFormattedTextField();
         jButton3Retornar = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
@@ -51,7 +51,7 @@ public class FormRemove extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jScrollPane1.setViewportView(jTextPaneBusca);
+        jScrollPane1.setViewportView(jTextPaneRemove);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(40, 260, 260, 190);
@@ -150,13 +150,13 @@ public class FormRemove extends javax.swing.JFrame {
 //        JOptionPane.showMessageDialog(this,"Buscado: " + cpf);
         
         OperacoesBD op = new OperacoesBD();
-        jTextPaneBusca.setText("");
+        jTextPaneRemove.setText("");
         try{
             Cliente c = new Cliente();
             int resposta;
             Object[] options = {"Sim", "Não"};
             c = op.buscarCPF(conn, cpf);
-            jTextPaneBusca.setText("Nome: " + c.getNome() + "\n"+ "CPF: " + c.getCpf() + "\n" + "Idade: " + c.getIdade() + "\n" + "Telefone: " + c.getTelefone()); 
+            jTextPaneRemove.setText("Nome: " + c.getNome() + "\n"+ "CPF: " + c.getCpf() + "\n" + "Idade: " + c.getIdade() + "\n" + "Telefone: " + c.getTelefone()); 
             resposta = JOptionPane.showOptionDialog( null,"Confirma a exlcusão do cliente?", "Exclusão",JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             
             if(resposta == 0){
@@ -172,6 +172,9 @@ public class FormRemove extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Cliente Não Encontrado");
             Logger.getLogger(FormRemove.class.getName()).log(Level.SEVERE, null, e);
         }
+        
+        jTextPaneRemove.setText("");
+        tfCPF.setText("");
     }//GEN-LAST:event_jButtonBuscarMouseClicked
 
     /**
@@ -218,7 +221,7 @@ public class FormRemove extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2Imagem;
     private javax.swing.JLabel jLabel7CPF;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPaneBusca;
+    private javax.swing.JTextPane jTextPaneRemove;
     private javax.swing.JFormattedTextField tfCPF;
     // End of variables declaration//GEN-END:variables
 }

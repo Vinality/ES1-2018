@@ -47,8 +47,6 @@ public class Cliente {
     private int idade;
     private String telefone;
     
-    
-
     /**
      * @param args the command line arguments
      */
