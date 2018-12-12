@@ -81,7 +81,6 @@ public class OperacoesBD {
     public void listarClientes(Connection conn, JTextArea j) throws SQLException{
         String selectSQL = "SELECT * FROM CLIENTE ORDER BY NOME ASC";
         Cliente cliente = null;
-        System.out.println(selectSQL);
        
         PreparedStatement pstmt = conn.prepareStatement(selectSQL);
         ResultSet rs = pstmt.executeQuery();
