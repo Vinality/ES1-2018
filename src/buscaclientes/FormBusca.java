@@ -39,9 +39,9 @@ public class FormBusca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPaneBusca = new javax.swing.JTextPane();
         tfCPF = new javax.swing.JFormattedTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextAreaBuscar = new javax.swing.JTextArea();
         jButton3Retornar = new javax.swing.JButton();
         jButtonBuscar = new javax.swing.JButton();
         jLabel2Imagem = new javax.swing.JLabel();
@@ -51,11 +51,6 @@ public class FormBusca extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
-
-        jScrollPane1.setViewportView(jTextPaneBusca);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 260, 260, 190);
 
         try {
             tfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -69,6 +64,13 @@ public class FormBusca extends javax.swing.JFrame {
         });
         getContentPane().add(tfCPF);
         tfCPF.setBounds(130, 133, 140, 26);
+
+        jTextAreaBuscar.setColumns(20);
+        jTextAreaBuscar.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaBuscar);
+
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(40, 260, 270, 190);
 
         jButton3Retornar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_ic_keyboard_return_48px_352473.png"))); // NOI18N
         jButton3Retornar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,14 +150,14 @@ public class FormBusca extends javax.swing.JFrame {
         // TODO add your handling code here:
         String cpf;
         cpf = tfCPF.getText();
-//        JOptionPane.showMessageDialog(this,"Buscado: " + cpf);
         
         OperacoesBD op = new OperacoesBD();
-        jTextPaneBusca.setText("");
+        jTextAreaBuscar.setText("");
         try{
             Cliente c = new Cliente();
             c = op.buscarCPF(conn, cpf);
-            jTextPaneBusca.setText("Nome: " + c.getNome() + "\n"+ "CPF: " + c.getCpf() + "\n" + "Idade: " + c.getIdade() + "\n" + "Telefone: " + c.getTelefone());        
+            jTextAreaBuscar.setText("Nome: " + c.getNome() + "\n"+ "CPF: " + c.getCpf() + "\n" + "Idade: " + c.getIdade() + "\n" + "Telefone: " + c.getTelefone() + "\n");   
+            op.exibirPets(conn, c.getCpf(), jTextAreaBuscar);
         }
         catch(SQLException ex){
             JOptionPane.showMessageDialog(this,"Cliente Não Encontrado");
@@ -164,7 +166,6 @@ public class FormBusca extends javax.swing.JFrame {
         catch(NullPointerException e){
             int resposta;
             Object[] options = {"Sim", "Não"};
-//            JOptionPane.showMessageDialog(this,"Cliente Não Encontrado: Deseja Inseri-lo?");
             resposta = JOptionPane.showOptionDialog( null,"Cliente Não Encontrado: Deseja Inseri-lo?", "Exclusão",JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             Logger.getLogger(FormBusca.class.getName()).log(Level.SEVERE, null, e);
             
@@ -173,6 +174,7 @@ public class FormBusca extends javax.swing.JFrame {
                 this.dispose();
             }
         }
+        tfCPF.setText("");
     }//GEN-LAST:event_jButtonBuscarMouseClicked
 
     /**
@@ -218,8 +220,8 @@ public class FormBusca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1Titulo;
     private javax.swing.JLabel jLabel2Imagem;
     private javax.swing.JLabel jLabel7CPF;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPaneBusca;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextAreaBuscar;
     private javax.swing.JFormattedTextField tfCPF;
     // End of variables declaration//GEN-END:variables
 }

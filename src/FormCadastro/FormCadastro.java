@@ -278,13 +278,15 @@ public class FormCadastro extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this,"Cliente Não Cadastrado");
             Logger.getLogger(FormCadastro.class.getName()).log(Level.SEVERE, null, ex);
+            try{
+                op.removerCliente(conn, c.getCpf());
+            }
+            catch (Exception e){
+            
+            }
             flag = 1;
         }
-        
-//        int resposta;
-//        Object[] options = {"Sim", "Não"};
-//        resposta = JOptionPane.showOptionDialog( null,"Deseja inserir mais um pet?", "Inserir", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-        
+              
         if(flag == 0){
             int resposta;
             Object[] options = {"Sim", "Não"};

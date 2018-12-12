@@ -19,15 +19,16 @@ import javax.swing.JTextPane;
 public class OperacoesBD {
     
     public void salvar(Connection conn, Cliente c, Paciente p)throws SQLException{
+        
         String concatena="','";
         String insertSQL="INSERT INTO CLIENTE(nome, cpf, idade,telefone) VALUES('";
         insertSQL+=c.getNome()+concatena;
         insertSQL+=c.getCpf()+concatena;
         insertSQL+=c.getIdade()+concatena;
         insertSQL+=c.getTelefone()+"')";
-        System.out.println(insertSQL);
+        
         PreparedStatement pstmt = conn.prepareStatement(insertSQL);
-
+        
         pstmt.execute();
         pstmt.close();
         
@@ -35,8 +36,7 @@ public class OperacoesBD {
         insertSQL+=p.getNome()+concatena;
         insertSQL+=p.getRGA()+concatena;
         insertSQL+=c.getCpf()+"')";
-        
-        System.out.println(insertSQL);
+  
         pstmt = conn.prepareStatement(insertSQL);
 
         pstmt.execute();
@@ -104,10 +104,19 @@ public class OperacoesBD {
             j.append("Nome: " + cliente.getNome() + "\n"+ "CPF:" + cliente.getCpf() + "\n" + "Idade: " + cliente.getIdade() + "\n" + "Telefone: " + cliente.getTelefone() + "\n");
             
             j.append("Nome do pet: ");
+            boolean flag = true;
             while(rs2.next()){
                 Paciente p = new Paciente();
-                p.setNome(rs2.getString("nome_pet"));
-                j.append(p.getNome() + ", ");
+                if(flag){
+                    p.setNome(rs2.getString("nome_pet"));
+                    j.append(p.getNome());
+                    flag = false;
+                }
+                else{
+                    j.append(", ");
+                    p.setNome(rs2.getString("nome_pet"));
+                    j.append(p.getNome());
+                }
             }
             j.append("\n\n");
             rs2.close();
@@ -123,8 +132,6 @@ public class OperacoesBD {
         removeSQL += " WHERE CPF = '";
         removeSQL += cpf;
         removeSQL += "'";
-        
-        System.out.println(removeSQL);
             
         PreparedStatement pstmt = conn.prepareStatement(removeSQL);
 
@@ -145,6 +152,34 @@ public class OperacoesBD {
 
         pstmt.execute();
         pstmt.close();
+    }
+    
+    public void exibirPets(Connection conn, String cpf, JTextArea j) throws SQLException{
+        String selectSQL = "SELECT nome, nome_pet FROM PACIENTE JOIN CLIENTE ON cliente.CPF = '";
+        selectSQL+=cpf+ "'";
+        selectSQL+=" AND paciente.CPF_FK = '";
+        selectSQL+=cpf+ "'";
+            
+        PreparedStatement pstmt = conn.prepareStatement(selectSQL);
+        ResultSet rs = pstmt.executeQuery();
+
+        j.append("Nome do pet: ");
+        boolean flag = true;
+        while(rs.next()){
+            Paciente p = new Paciente();
+            if(flag){
+                p.setNome(rs.getString("nome_pet"));
+                j.append(p.getNome());
+                flag = false;
+            }
+            else{
+                j.append(", ");
+                p.setNome(rs.getString("nome_pet"));
+                j.append(p.getNome());
+            }
+        }
+        j.append("\n\n");
+        rs.close();
     }
 }
 

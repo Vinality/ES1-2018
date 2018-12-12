@@ -9,6 +9,7 @@ import removercadastro.FormRemove;
 import FormCadastro.FormCadastro;
 import alterarcadastro.FormAlterar1;
 import buscaclientes.FormBusca;
+import javax.swing.JFrame;
 import listarclientes.FormListar;
 
 /**
