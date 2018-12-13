@@ -18,7 +18,7 @@ public class Conexao {
 
     private Conexao(){}
 
-    private static final String URL_MYSQL = "jdbc:derby://localhost:1527/clientes";
+    private static final String URL_MYSQL = "jdbc:derby://localhost:1527//Users/viniciuscrepschi/Documents/databases/clientes";
     private static final String DRIVER_CLASS = "org.apache.derby.jdbc.ClientDriver";
     private static final String USER = "nbuser";
     private static final String PASS = "nbuser";
