@@ -27,6 +27,7 @@ public class FormRemove extends javax.swing.JFrame {
     public FormRemove() {
         initComponents();
         conn = Conexao.getConnection();
+        jTextPaneRemove.setEnabled(false);
     }
 
     /**
@@ -147,8 +148,9 @@ public class FormRemove extends javax.swing.JFrame {
         // TODO add your handling code here:
         String cpf;
         cpf = tfCPF.getText();
-//        JOptionPane.showMessageDialog(this,"Buscado: " + cpf);
-        
+
+        jTextPaneRemove.setEnabled(true);
+        jTextPaneRemove.setEditable(false);
         OperacoesBD op = new OperacoesBD();
         jTextPaneRemove.setText("");
         try{

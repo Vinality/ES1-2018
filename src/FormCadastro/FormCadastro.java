@@ -69,7 +69,7 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfNomePet);
-        tfNomePet.setBounds(200, 323, 230, 28);
+        tfNomePet.setBounds(200, 323, 230, 26);
 
         jLabel6NomePet.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
         jLabel6NomePet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_paw_1608784 (1).png"))); // NOI18N
@@ -95,7 +95,7 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfRGA);
-        tfRGA.setBounds(160, 380, 140, 28);
+        tfRGA.setBounds(160, 380, 80, 26);
 
         tfNome.setToolTipText("Insira o nome completo do Cliente");
         tfNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -105,7 +105,7 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfNome);
-        tfNome.setBounds(160, 90, 300, 28);
+        tfNome.setBounds(160, 90, 300, 26);
 
         try {
             tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -118,7 +118,7 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfTelefone);
-        tfTelefone.setBounds(160, 263, 140, 28);
+        tfTelefone.setBounds(160, 263, 140, 26);
 
         try {
             tfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -132,7 +132,7 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfCPF);
-        tfCPF.setBounds(160, 143, 140, 28);
+        tfCPF.setBounds(160, 143, 140, 26);
 
         jButton1Limpar.setText("Limpar");
         jButton1Limpar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,7 +146,7 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1Limpar);
-        jButton1Limpar.setBounds(160, 430, 80, 30);
+        jButton1Limpar.setBounds(160, 430, 80, 29);
 
         jButton3Retornar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_ic_keyboard_return_48px_352473.png"))); // NOI18N
         jButton3Retornar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,7 +174,7 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2Cadastrar);
-        jButton2Cadastrar.setBounds(40, 430, 100, 30);
+        jButton2Cadastrar.setBounds(40, 430, 100, 29);
 
         try {
             tfIdade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##")));
@@ -182,7 +182,7 @@ public class FormCadastro extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(tfIdade);
-        tfIdade.setBounds(160, 200, 40, 28);
+        tfIdade.setBounds(160, 200, 40, 26);
 
         jLabel6Telefone.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
         jLabel6Telefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_phone_3325016 (1).png"))); // NOI18N

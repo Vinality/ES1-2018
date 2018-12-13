@@ -154,6 +154,7 @@ public class FormBusca extends javax.swing.JFrame {
         
         jTextAreaBuscar.setEnabled(true);
         jTextAreaBuscar.setEditable(false);
+
         OperacoesBD op = new OperacoesBD();
         jTextAreaBuscar.setText("");
         try{

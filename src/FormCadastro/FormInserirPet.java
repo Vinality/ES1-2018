@@ -72,7 +72,7 @@ public class FormInserirPet extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfNomePet);
-        tfNomePet.setBounds(210, 133, 230, 26);
+        tfNomePet.setBounds(210, 133, 230, 20);
 
         jLabel6NomePet.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
         jLabel6NomePet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_paw_1608784 (1).png"))); // NOI18N
@@ -87,7 +87,7 @@ public class FormInserirPet extends javax.swing.JFrame {
         jLabel7RGA.setBounds(40, 190, 100, 30);
 
         try {
-            tfRGA.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            tfRGA.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -98,7 +98,7 @@ public class FormInserirPet extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfRGA);
-        tfRGA.setBounds(170, 193, 140, 26);
+        tfRGA.setBounds(170, 193, 80, 20);
 
         jButton1Limpar.setText("Limpar");
         jButton1Limpar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -112,7 +112,7 @@ public class FormInserirPet extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1Limpar);
-        jButton1Limpar.setBounds(170, 340, 80, 29);
+        jButton1Limpar.setBounds(170, 340, 80, 23);
 
         jButton3Retornar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_ic_keyboard_return_48px_352473.png"))); // NOI18N
         jButton3Retornar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,7 +140,7 @@ public class FormInserirPet extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2Cadastrar);
-        jButton2Cadastrar.setBounds(30, 340, 100, 29);
+        jButton2Cadastrar.setBounds(30, 340, 100, 23);
 
         jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_1rsz_kisspng-dog-grooming-puppy-cat-pet-white-dog-5a70ac435552b05161753115173335713495.png"))); // NOI18N
         jLabel2Imagem.setToolTipText("");
@@ -186,6 +186,11 @@ public class FormInserirPet extends javax.swing.JFrame {
         
         p.setNome(tfNomePet.getText());
         p.setRGA(tfRGA.getText()); 
+
+        if (p.getRGA().equals("") || p.getNome().equals("")) {
+            JOptionPane.showMessageDialog(null, "Favor preencher todos os campos.");
+            return;
+         }
         
         OperacoesBD op=new OperacoesBD();
         try {

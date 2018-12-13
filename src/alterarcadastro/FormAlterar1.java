@@ -193,10 +193,17 @@ public class FormAlterar1 extends javax.swing.JFrame {
         String telefone;
         cpf = tfCPF.getText();
         nome = tfNome.getText();
+        if(tfIdade.getText().equals("  ")){
+            JOptionPane.showMessageDialog(null, "Favor preencher todos os campos.");
+            return;
+        }
         idade = Integer.parseInt(tfIdade.getText());
         telefone = tfTelefone.getText();
         // JOptionPane.showMessageDialog(this,"Buscado: " + cpf);
-        
+        if (cpf.equals("") || nome.equals("") || tfIdade.getText().equals("  ") || telefone.equals("")){
+           JOptionPane.showMessageDialog(null, "Favor preencher todos os campos.");
+           return;
+        }
         OperacoesBD op = new OperacoesBD();
         try{
             tfCPF.setText("");
