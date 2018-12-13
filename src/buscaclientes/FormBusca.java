@@ -28,6 +28,7 @@ public class FormBusca extends javax.swing.JFrame {
     public FormBusca() {
         initComponents();
         conn = Conexao.getConnection();
+        jTextAreaBuscar.setEnabled(false);
     }
 
     /**
@@ -151,6 +152,8 @@ public class FormBusca extends javax.swing.JFrame {
         String cpf;
         cpf = tfCPF.getText();
         
+        jTextAreaBuscar.setEnabled(true);
+        jTextAreaBuscar.setEditable(false);
         OperacoesBD op = new OperacoesBD();
         jTextAreaBuscar.setText("");
         try{

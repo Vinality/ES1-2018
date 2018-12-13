@@ -18,7 +18,7 @@ import javax.swing.JTextPane;
  */
 public class OperacoesBD {
     
-    public void salvar(Connection conn, Cliente c, Paciente p)throws SQLException{
+    public void salvar(Connection conn, Cliente c, Paciente p)throws SQLException {
         
         String concatena="','";
         String insertSQL="INSERT INTO CLIENTE(nome, cpf, idade,telefone) VALUES('";
@@ -64,9 +64,13 @@ public class OperacoesBD {
         return cliente;
     }
 
-    public void alterarTelefone(Connection conn, String telefone, String cpf) throws SQLException, Exception {
+    public void alterarTelefone(Connection conn, String nome, int idade, String telefone, String cpf) throws SQLException, Exception {
         String updateSQL = "UPDATE CLIENTE SET TELEFONE = '";
         updateSQL += telefone;
+        updateSQL += "', NOME = '";
+        updateSQL += nome;
+        updateSQL += "', IDADE = '";
+        updateSQL += idade;
         updateSQL += "' WHERE CPF = '";
         updateSQL += cpf;
         updateSQL += "'";

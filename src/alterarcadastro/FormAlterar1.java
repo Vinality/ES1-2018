@@ -42,6 +42,10 @@ public class FormAlterar1 extends javax.swing.JFrame {
         tfCPF = new javax.swing.JFormattedTextField();
         tfTelefone = new javax.swing.JFormattedTextField();
         jLabel7CPF1 = new javax.swing.JLabel();
+        tfNome = new javax.swing.JTextField();
+        jLabel3Nome = new javax.swing.JLabel();
+        jLabel5Idade = new javax.swing.JLabel();
+        tfIdade = new javax.swing.JFormattedTextField();
         jButton3Retornar = new javax.swing.JButton();
         jButtonConfirmar = new javax.swing.JButton();
         jLabel2Imagem = new javax.swing.JLabel();
@@ -63,7 +67,7 @@ public class FormAlterar1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfCPF);
-        tfCPF.setBounds(140, 133, 140, 26);
+        tfCPF.setBounds(130, 123, 140, 26);
 
         try {
             tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -76,13 +80,42 @@ public class FormAlterar1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tfTelefone);
-        tfTelefone.setBounds(230, 200, 140, 26);
+        tfTelefone.setBounds(210, 289, 140, 26);
 
         jLabel7CPF1.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
         jLabel7CPF1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_phone_3325016 (1).png"))); // NOI18N
         jLabel7CPF1.setText("Novo Telefone:");
         getContentPane().add(jLabel7CPF1);
-        jLabel7CPF1.setBounds(50, 170, 190, 80);
+        jLabel7CPF1.setBounds(30, 260, 190, 80);
+
+        tfNome.setToolTipText("");
+        tfNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tfNome);
+        tfNome.setBounds(180, 175, 300, 26);
+
+        jLabel3Nome.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
+        jLabel3Nome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_user_309035.png"))); // NOI18N
+        jLabel3Nome.setText("Novo Nome:");
+        getContentPane().add(jLabel3Nome);
+        jLabel3Nome.setBounds(28, 175, 170, 22);
+
+        jLabel5Idade.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 0, 18)); // NOI18N
+        jLabel5Idade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_birthday-cake_1608875.png"))); // NOI18N
+        jLabel5Idade.setText("Nova Idade:");
+        getContentPane().add(jLabel5Idade);
+        jLabel5Idade.setBounds(30, 230, 160, 30);
+
+        try {
+            tfIdade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(tfIdade);
+        tfIdade.setBounds(180, 233, 40, 26);
 
         jButton3Retornar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_ic_keyboard_return_48px_352473.png"))); // NOI18N
         jButton3Retornar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -111,7 +144,7 @@ public class FormAlterar1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonConfirmar);
-        jButtonConfirmar.setBounds(40, 290, 170, 60);
+        jButtonConfirmar.setBounds(30, 380, 170, 60);
 
         jLabel2Imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/rsz_1doge.png"))); // NOI18N
         jLabel2Imagem.setToolTipText("");
@@ -130,7 +163,7 @@ public class FormAlterar1 extends javax.swing.JFrame {
         jLabel7CPF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/iconfinder_carnet-male_416923.png"))); // NOI18N
         jLabel7CPF.setText("CPF:");
         getContentPane().add(jLabel7CPF);
-        jLabel7CPF.setBounds(50, 130, 80, 30);
+        jLabel7CPF.setBounds(30, 120, 80, 30);
 
         PlanoDeFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/WhatsApp Image 2018-12-06 at 15.50.28.jpeg"))); // NOI18N
         getContentPane().add(PlanoDeFundo);
@@ -155,18 +188,24 @@ public class FormAlterar1 extends javax.swing.JFrame {
     private void jButtonConfirmarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmarMouseClicked
         // TODO add your handling code here:
         String cpf;
+        String nome;
+        int idade;
         String telefone;
         cpf = tfCPF.getText();
+        nome = tfNome.getText();
+        idade = Integer.parseInt(tfIdade.getText());
         telefone = tfTelefone.getText();
         // JOptionPane.showMessageDialog(this,"Buscado: " + cpf);
         
         OperacoesBD op = new OperacoesBD();
         try{
             tfCPF.setText("");
+            tfNome.setText("");
+            tfIdade.setText("");
             tfTelefone.setText("");
             Cliente c = new Cliente();
             c = op.buscarCPF(conn, cpf);
-            op.alterarTelefone(conn, telefone, cpf);
+            op.alterarTelefone(conn, nome, idade, telefone, cpf);
             JOptionPane.showMessageDialog(this,"Cadastro atualizado");
         }
         catch(SQLException ex){
@@ -188,6 +227,10 @@ public class FormAlterar1 extends javax.swing.JFrame {
         new Menu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3RetornarMouseClicked
+
+    private void tfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,9 +273,13 @@ public class FormAlterar1 extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConfirmar;
     private javax.swing.JLabel jLabel1Titulo;
     private javax.swing.JLabel jLabel2Imagem;
+    private javax.swing.JLabel jLabel3Nome;
+    private javax.swing.JLabel jLabel5Idade;
     private javax.swing.JLabel jLabel7CPF;
     private javax.swing.JLabel jLabel7CPF1;
     private javax.swing.JFormattedTextField tfCPF;
+    private javax.swing.JFormattedTextField tfIdade;
+    private javax.swing.JTextField tfNome;
     private javax.swing.JFormattedTextField tfTelefone;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,6 +27,7 @@ public class FormListar extends javax.swing.JFrame {
     public FormListar() {
         initComponents();
         conn = Conexao.getConnection();
+        jTextArea1.setEnabled(false);
     }
 
     /**
@@ -121,8 +122,10 @@ public class FormListar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3RetornarMouseClicked
 
     private void jButtonListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonListarMouseClicked
-        // TODO add your handling code here:       
+        // TODO add your handling code here: 
+        jTextArea1.setEditable(false);
         OperacoesBD op = new OperacoesBD();
+        jTextArea1.setEnabled(true);
         try{
             op.listarClientes(conn, jTextArea1);
         }
